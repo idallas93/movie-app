@@ -1,3 +1,4 @@
+//movie/ favorite heading component
 import React from 'react';
 
 const MovieListHeading = (props) => {

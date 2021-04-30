@@ -1,3 +1,4 @@
+//add to favorites overlay that is clicked to add item from movies list to favorites list
 import React from "react";
 
 const AddFavorites = () => {

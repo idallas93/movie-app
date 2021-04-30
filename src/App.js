@@ -1,3 +1,4 @@
+//dependencies
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -7,13 +8,16 @@ import AddFavorites from "./components/AddFavorites";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function App() {
+  //state defined and api key listed  (api key is visible on frontend which is bad practice but left here as OMDB API is free)
   const key = "a6bf5363";
   const [data, setData] = useState([]);
   const [favoriteMovie, setFavoriteMovie] = useState([]);
   const [searchMovieValue, setSearchMovieValue] = useState("");
   const [sort, setSort] = useState(false);
 
+  //async function to hit API endpoint
   const getDataRequest = async (searchMovieValue) => {
+    //endpoint is hit dynamically based on the search movie value input by the user
     const url = `https://www.omdbapi.com/?s=${searchMovieValue}&apikey=${key}`;
     const response = await fetch(url);
     const movies = await response.json();
@@ -22,16 +26,19 @@ function App() {
     }
   };
 
+  //use effect rungs getDataRequest function and takes the searchMovieValue as an input, sets data as response from API endpoint
   useEffect(() => {
     getDataRequest(searchMovieValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchMovieValue]);
 
+  //function to handle adding new movie to favorite list
   const addFavoriteMovie = (movie) => {
     const newFavoriteMovie = [...favoriteMovie, movie];
     setFavoriteMovie(newFavoriteMovie);
   };
 
+  // dnd beautiful handleOnDragEnd function, this handles where a list item is placed when the drag ends 
   function handleOnDragEnd(result) {
     if (!result.destination) return;
     const items = Array.from(data);
@@ -40,6 +47,7 @@ function App() {
     setData(items);
   }
 
+  // dnd beautiful handleOnDragEnd function, this handles where a list item is placed when the drag ends, this one handles the favorites favorites list
   function handleOnDragEnd2(result) {
     if (!result.destination) return;
     const items = Array.from(favoriteMovie);
@@ -48,6 +56,7 @@ function App() {
     setFavoriteMovie(items);
   }
 
+  //if the sort state is false (sort button not pushed) render this 
   if (!sort) {
     return (
       <div id="main-container" className="container-fluid movie-app">
@@ -168,6 +177,8 @@ function App() {
         </div>
       </div>
     );
+      //if the sort state is true (sort button is pushed) render this 
+
   } else {
     return (
       <div id="main-container" className="container-fluid movie-app">

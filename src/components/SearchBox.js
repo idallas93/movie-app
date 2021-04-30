@@ -1,3 +1,4 @@
+//component for search input
 import React from "react";
 
 const SearchBox = (props) => {

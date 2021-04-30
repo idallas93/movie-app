@@ -7,8 +7,10 @@ import SearchBox from "./components/SearchBox";
 import AddFavorites from "./components/AddFavorites";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
+
 function App() {
-  const key = "91798c67";
+
+  const key = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const [favoriteMovie, setFavoriteMovie] = useState([]);
   const [searchMovieValue, setSearchMovieValue] = useState("");
@@ -24,6 +26,7 @@ function App() {
 
   useEffect(() => {
     getDataRequest(searchMovieValue);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchMovieValue]);
 
   const addFavoriteMovie = (movie) => {
@@ -53,7 +56,6 @@ function App() {
                 ref={provided.innerRef}
               >
                 {data.map((movie, index) => {
-                  console.log("test", movie);
                   return (
                     <Draggable
                       key={movie.imdbID}
@@ -97,7 +99,6 @@ function App() {
                 ref={provided.innerRef}
               >
                 {favoriteMovie.map((movie, index) => {
-                  console.log("test", movie);
                   return (
                     <Draggable
                       key={movie.imdbID}

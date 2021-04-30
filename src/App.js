@@ -10,7 +10,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function App() {
 
-  const key = process.env.REACT_APP_API_KEY
+  const key = 'a6bf5363'
   const [data, setData] = useState([]);
   const [favoriteMovie, setFavoriteMovie] = useState([]);
   const [searchMovieValue, setSearchMovieValue] = useState("");

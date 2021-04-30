@@ -3,6 +3,13 @@ body {
   color: #ffffff;
 }
 
+.row{
+  overflow: auto;
+}
+
+.col-6{
+  max-width: none !important
+}
 .movie-app > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
@@ -36,4 +43,13 @@ body {
 
 ul {
   list-style-type: none
+}
+
+#card-container{
+  margin-bottom: 2.5rem!important
+}
+
+#sort-button{
+  margin-bottom: 2.5rem;
+  padding: 1rem
 }

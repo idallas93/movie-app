@@ -10,11 +10,12 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function App() {
 
-  const key = process.env.REACT_APP_API_KEY;
+  const key = process.env.REACT_APP_API_KEY
   const [data, setData] = useState([]);
   const [favoriteMovie, setFavoriteMovie] = useState([]);
   const [searchMovieValue, setSearchMovieValue] = useState("");
 
+  console.log(key)
   const getDataRequest = async (searchMovieValue) => {
     const url = `https://www.omdbapi.com/?s=${searchMovieValue}&apikey=${key}`;
     const response = await fetch(url);
